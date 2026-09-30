@@ -1,5 +1,9 @@
 # Splitify — бот подсчёта долгов в путешествии
 
+> Telegram bot for splitting travel expenses and settling debts.
+> Multi-currency, works in group chats (including topics), with step-by-step button dialogs.
+> Built with [Claude Code](https://claude.com/claude-code).
+
 ## Что нужно установить (один раз)
 
 1. **JDK 17+** — https://adoptium.net (Temurin, при установке отметь "Add to PATH")

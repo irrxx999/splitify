@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git branch:*)",
+      "Bash(powershell -File scripts/build.ps1 -Compile)"
+    ],
+    "deny": [
+      "Read(./splitify.db*)",
+      "Read(./.env)",
+      "Read(./**/*.env)"
+    ]
+  }
+}
