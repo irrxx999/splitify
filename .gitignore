@@ -1,0 +1,15 @@
+# Сборка
+target/
+dependency-reduced-pom.xml
+
+# База с данными пользователей и секреты — никогда в репозиторий
+splitify.db
+splitify.db-shm
+splitify.db-wal
+*.db
+.env
+*.env
+
+# IDE
+.idea/
+*.iml
