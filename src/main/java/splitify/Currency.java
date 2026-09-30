@@ -56,8 +56,16 @@ public enum Currency {
 
     static {
         for (Currency c : values()) {
-            LOOKUP.put(c.name().toLowerCase(), c);
-            for (String a : c.aliases) LOOKUP.put(a.toLowerCase(), c);
+            register(c.name(), c);
+            for (String a : c.aliases) register(a, c);
+        }
+    }
+
+    /** Один алиас — одна валюта: дубликат — ошибка разработчика, лучше упасть сразу при старте. */
+    private static void register(String key, Currency c) {
+        Currency prev = LOOKUP.put(key.toLowerCase(), c);
+        if (prev != null && prev != c) {
+            throw new IllegalStateException("Алиас «" + key + "» задан и для " + prev + ", и для " + c);
         }
     }
 

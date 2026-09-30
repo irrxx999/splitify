@@ -1,7 +1,8 @@
 ﻿# Сборка Splitify. Сам находит Maven (PATH или встроенный в IntelliJ IDEA).
 #   .\scripts\build.ps1            — clean package (собирает target\splitify.jar)
 #   .\scripts\build.ps1 -Compile   — только компиляция; безопасно, пока бот запущен
-param([switch]$Compile)
+#   .\scripts\build.ps1 -Test      — запуск тестов; безопасно, пока бот запущен
+param([switch]$Compile, [switch]$Test)
 
 $ErrorActionPreference = 'Stop'
 Set-Location (Split-Path $PSScriptRoot -Parent)
@@ -15,7 +16,9 @@ function Find-Mvn {
     throw 'Maven не найден: добавь его в PATH или установи IntelliJ IDEA.'
 }
 
-if ($Compile) {
+if ($Test) {
+    $goals = @('test')
+} elseif ($Compile) {
     $goals = @('compile')
 } else {
     # Запущенный бот держит jar открытым — clean не сможет его удалить.
